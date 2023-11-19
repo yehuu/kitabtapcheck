@@ -13,13 +13,14 @@ from novella import Novella
 from ovod import Ovod
 from kivymd.uix.imagelist import MDSmartTile
 from kivymd.uix.label import MDLabel
+import webbrowser
 
 KV = '''
 BoxLayout:
     orientation: 'vertical'
 
     MDLabel:
-        text: "MDLabel imported"
+        text: "webbrowser imported"
         halign: 'center'
         theme_text_color: 'Secondary'
 '''
@@ -44,7 +45,6 @@ if __name__ == '__main__':
 # from kitabevim import Kitabevim
 # from novella import Novella
 # from ovod import Ovod
-
 # from kivymd.uix.imagelist import MDSmartTile
 # from kivymd.uix.label import MDLabel
 # import webbrowser
