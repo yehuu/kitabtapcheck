@@ -15,22 +15,21 @@ from kivymd.uix.imagelist import MDSmartTile
 from kivymd.uix.label import MDLabel
 import webbrowser
 
-KV = '''
-BoxLayout:
-    orientation: 'vertical'
+Builder.load_file("dizaynim.kv")
 
-    MDLabel:
-        text: "webbrowser imported"
-        halign: 'center'
-        theme_text_color: 'Secondary'
-'''
+class MenimDizaynim(MDScreen):
+    def __init__(self, **kwargs):
+        super(MenimDizaynim, self).__init__(**kwargs)
+        self.dropdown_menu = ''
 
-class HelloWorldApp(MDApp):
+class MenimYeniAppim(MDApp):
     def build(self):
-        return Builder.load_file("dizaynim.kv")
+        self.theme_cls.primary_palette = "Orange"
+        self.theme_cls.theme_style = "Dark"
+        return MenimDizaynim()
 
 if __name__ == '__main__':
-    HelloWorldApp().run()
+    MenimYeniAppim().run()
 
 
 # from kivymd.app import MDApp
