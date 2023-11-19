@@ -5,13 +5,14 @@ from kivymd.uix.screen import MDScreen
 from kivymd.uix.menu import MDDropdownMenu
 from search_book import SearchBook
 from kivy.clock import Clock
+from libraff import Libraff
 
 KV = '''
 BoxLayout:
     orientation: 'vertical'
 
     MDLabel:
-        text: "Good job"
+        text: "Libraff imported"
         halign: 'center'
         theme_text_color: 'Secondary'
 '''
