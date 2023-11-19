@@ -25,11 +25,16 @@ BoxLayout:
         theme_text_color: 'Secondary'
 '''
 
+
+class Interface(MDScreen):
+    pass
+
 class MenimYeniAppim(MDApp):
     def build(self):
         self.theme_cls.primary_palette = "Orange"
         self.theme_cls.theme_style = "Dark"
-        return Builder.load_string(KV)
+        Builder.load_file("dizaynim.kv")
+        return Interface()
 
 if __name__ == '__main__':
     MenimYeniAppim().run()
