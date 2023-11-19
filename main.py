@@ -1,13 +1,15 @@
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivymd.uix.label import MDLabel
+from kivymd.uix.screen import MDScreen
+from kivymd.uix.menu import MDDropdownMenu
 
 KV = '''
 BoxLayout:
     orientation: 'vertical'
 
     MDLabel:
-        text: "Hello, World!"
+        text: "Good job"
         halign: 'center'
         theme_text_color: 'Secondary'
 '''
@@ -24,6 +26,7 @@ if __name__ == '__main__':
 # from kivy.lang import Builder
 # from kivymd.uix.screen import MDScreen
 # from kivymd.uix.menu import MDDropdownMenu
+
 # from search_book import SearchBook
 # from kivy.clock import Clock
 # from libraff import Libraff
