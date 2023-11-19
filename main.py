@@ -1,6 +1,5 @@
 from kivy.lang import Builder
 from kivymd.app import MDApp
-from kivymd.uix.label import MDLabel
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.menu import MDDropdownMenu
 from search_book import SearchBook
@@ -12,13 +11,15 @@ from kitabal import Kitabal
 from kitabevim import Kitabevim
 from novella import Novella
 from ovod import Ovod
+from kivymd.uix.imagelist import MDSmartTile
+from kivymd.uix.label import MDLabel
 
 KV = '''
 BoxLayout:
     orientation: 'vertical'
 
     MDLabel:
-        text: "Ovod imported"
+        text: "MDLabel imported"
         halign: 'center'
         theme_text_color: 'Secondary'
 '''
@@ -40,10 +41,10 @@ if __name__ == '__main__':
 # from libraff import Libraff
 # from alinino import Alinino
 # from kitabal import Kitabal
-
 # from kitabevim import Kitabevim
 # from novella import Novella
 # from ovod import Ovod
+
 # from kivymd.uix.imagelist import MDSmartTile
 # from kivymd.uix.label import MDLabel
 # import webbrowser
