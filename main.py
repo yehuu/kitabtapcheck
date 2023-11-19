@@ -1,9 +1,20 @@
-from kivy.app import App
-from kivy.uix.label import Label
+from kivy.lang import Builder
+from kivymd.app import MDApp
+from kivymd.uix.label import MDLabel
 
-class HelloWorldApp(App):
+KV = '''
+BoxLayout:
+    orientation: 'vertical'
+
+    MDLabel:
+        text: "Hello, World!"
+        halign: 'center'
+        theme_text_color: 'Secondary'
+'''
+
+class HelloWorldApp(MDApp):
     def build(self):
-        return Label(text='Hello, World!')
+        return Builder.load_string(KV)
 
 if __name__ == '__main__':
     HelloWorldApp().run()
