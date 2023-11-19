@@ -6,6 +6,9 @@ from kivymd.uix.menu import MDDropdownMenu
 from search_book import SearchBook
 from kivy.clock import Clock
 from libraff import Libraff
+from libraff import Libraff
+from alinino import Alinino
+from kitabal import Kitabal
 
 KV = '''
 BoxLayout:
@@ -35,6 +38,7 @@ if __name__ == '__main__':
 # from libraff import Libraff
 # from alinino import Alinino
 # from kitabal import Kitabal
+
 # from kitabevim import Kitabevim
 # from novella import Novella
 # from ovod import Ovod
