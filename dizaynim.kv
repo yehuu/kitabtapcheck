@@ -1,0 +1,39 @@
+<MenimDizaynim>:
+    Screen:
+        MDBoxLayout:
+            orientation: "vertical"
+            valign: "top"
+            MDTopAppBar:
+                title: "Kitab tap"
+                left_action_items: [["menu", lambda x: app.callback(x)]]
+                right_action_items: [["dots-vertical", lambda x: app.callback(x)]]
+            MDBoxLayout:
+                padding: dp(10)
+                adaptive_height: True
+                spacing: dp(10)
+                MDTextField:
+                    id: kitab_axtar
+                    mode: "round"
+                    icon_left: 'magnify'
+                    fill_color_normal: 0.3,0.3,0.3,0.3
+                    hint_text: "Kitabı adı daxil edin"
+                    text:"kimyagər"
+                MDRaisedButton:
+                    text: "Axtar"
+                    md_bg_color: "red"
+                    on_release: root.axtar()
+            MDScrollView:
+                do_scroll_y: True
+                MDGridLayout:
+                    id: cards
+                    cols: 3
+                    spacing: dp(20)
+                    padding: 30, 30
+                    row_default_height: 100
+                    adaptive_height: True
+            MDBottomAppBar:
+                MDTopAppBar:
+                    title: "kitabtap.com"
+                    icon: "git"
+                    type: "bottom"
+                    mode: "end"
