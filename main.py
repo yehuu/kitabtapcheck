@@ -15,16 +15,7 @@ from kivymd.uix.imagelist import MDSmartTile
 from kivymd.uix.label import MDLabel
 import webbrowser
 
-KV = '''
-BoxLayout:
-    orientation: 'vertical'
-
-    MDLabel:
-        text: "Testing KV"
-        halign: 'center'
-        theme_text_color: 'Secondary'
-'''
-
+Builder.load_file("dizaynim.kv")
 
 class Interface(MDScreen):
     pass
@@ -33,7 +24,6 @@ class MenimYeniAppim(MDApp):
     def build(self):
         self.theme_cls.primary_palette = "Orange"
         self.theme_cls.theme_style = "Dark"
-        Builder.load_file("dizaynim.kv")
         return Interface()
 
 if __name__ == '__main__':
