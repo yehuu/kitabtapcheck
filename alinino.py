@@ -27,7 +27,7 @@ class Alinino:
                 if single_book['variants'][0]['quantity']  >   0:
                     book_price  =   single_book['variants'][0]['price']
                     book_name = single_book['title']
-                    book_url = f"//alinino.az{single_book['url']}"
+                    book_url = f"http://alinino.az{single_book['url']}"
                     book_picture = single_book['images'][0]['compact_url']
 
                     collect_books.append({'book': book_name, 'price': book_price, 'picture': book_picture, 'url':book_url})
