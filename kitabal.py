@@ -29,7 +29,7 @@ class Kitabal:
         for single_book in all_books:
             # bura seklini goturmek uchundur..
             all_links = single_book.find_all('a')
-            book_url = f"//kitabal.az/{all_links[0].get('href')}"
+            book_url = f"http://kitabal.az/{all_links[0].get('href')}"
             book_picture = all_links[0].find_all('img')[0].get('src')
 
             # bura kitab adini goturmek uchundur..
