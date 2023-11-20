@@ -39,8 +39,12 @@ class Ovod:
             book_url = single_book.find_all('a')[0].get('href')
             book_picture = f"https://ovod.az{single_book.find_all('a')[0].find('img').get('src')}"
             book_price = single_book.find_all('span')[-1].text
-            price_pattern = f"\d+\.\d+"
-            book_price = re.findall(price_pattern, book_price)[0]
+
+            pre_book_price = re.findall(f"\d+\.\d+", book_price)
+            if pre_book_price:
+                book_price = pre_book_price[0]
+            else:
+                book_price = book_price.split()[0]
 
             # check similarity...
             similarity = self.similarity(gf.filter_book_name(book_name), self.axtarilan_soz)
