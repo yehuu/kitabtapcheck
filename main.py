@@ -1,6 +1,7 @@
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivymd.uix.screen import MDScreen
+from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.menu import MDDropdownMenu
 from search_book import SearchBook
 from kivy.clock import Clock
@@ -17,7 +18,7 @@ import webbrowser
 
 Builder.load_file("dizaynim.kv")
 
-class Interface(MDScreen):
+class Interface(MDBoxLayout):
     pass
 
 class MenimYeniAppim(MDApp):
