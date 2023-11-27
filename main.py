@@ -1,11 +1,13 @@
+import time
+
 from kivy.lang import Builder
 from kivymd.app import MDApp
+from kivymd.uix.dialog import MDDialog
 from kivymd.uix.screen import MDScreen
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.menu import MDDropdownMenu
 from search_book import SearchBook
 from kivy.clock import Clock
-from libraff import Libraff
 from libraff import Libraff
 from alinino import Alinino
 from kitabal import Kitabal
@@ -22,11 +24,24 @@ class Interface(MDBoxLayout):
     def __init__(self, **kwargs):
         super(Interface, self).__init__(**kwargs)
         self.dropdown_menu = ''
+        self.dialog = None
+
+    def axtarilir_pop(self, call_func):
+        if not self.dialog:
+            self.dialog = MDDialog(
+                text="Axtarılır..."
+            )
+        self.dialog.open()
+        if call_func == 'axtar589':
+            Clock.schedule_once(lambda dt: self.axtar())
+        else:
+            Clock.schedule_once(lambda dt: self.search_bookshops(call_func))
+
 
     def axtar(self):
+        self.dialog.dismiss()
         axtarilan_soz = self.ids.kitab_axtar.text
         dizaynim_ids = self.ids
-
         if len(axtarilan_soz) > 1:
             search_book = SearchBook()
             search_result = search_book.search_book(axtarilan_soz)
@@ -48,6 +63,10 @@ class Interface(MDBoxLayout):
     def menu_callback(self, text):
         self.close_menu()
         self.ids.cards.clear_widgets()
+        Clock.schedule_once(lambda dt: self.axtarilir_pop(text))
+
+
+    def search_bookshops(self, text):
         all_data = []
 
         # Libraff klasindan neticeni goturur..
@@ -100,6 +119,10 @@ class Interface(MDBoxLayout):
                 price_layout = MDLabel(text=f"{single_data['price']} azn", color=(1,1,1,1))
                 all_layout.add_widget(price_layout)
                 self.ids.cards.add_widget(all_layout)
+        Clock.schedule_once(lambda dt: self.dialog.dismiss())
+
+
+
 
     def open_url(self, url):
         webbrowser.open(url)
