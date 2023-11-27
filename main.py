@@ -112,8 +112,7 @@ class Interface(MDBoxLayout):
                 all_layout = MDSmartTile(
                     source=f"{single_data['picture']}",
                     box_color=(0, 0, 0, 0.9),
-                    size=(200, 200),
-                    size_hint_y=None
+                    size=(200, 200)
                 )
                 all_layout.bind(on_release=lambda x, url=single_data['url']: self.open_url(url))
                 price_layout = MDLabel(text=f"{single_data['price']} azn", color=(1,1,1,1))
