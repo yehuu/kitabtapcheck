@@ -1,9 +1,6 @@
-import time
-
 from kivy.lang import Builder
 from kivymd.app import MDApp
 from kivymd.uix.dialog import MDDialog
-from kivymd.uix.screen import MDScreen
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivymd.uix.menu import MDDropdownMenu
 from search_book import SearchBook
@@ -29,13 +26,20 @@ class Interface(MDBoxLayout):
     def axtarilir_pop(self, call_func):
         if not self.dialog:
             self.dialog = MDDialog(
-                text="Axtarılır..."
+                text="Axtarılır.."
             )
         self.dialog.open()
         if call_func == 'axtar589':
             Clock.schedule_once(lambda dt: self.axtar())
         else:
             Clock.schedule_once(lambda dt: self.search_bookshops(call_func))
+
+    def update_dialog(self, book_count):
+        self.dialog.dismiss()
+        self.dialog = MDDialog(
+            text=f"Axtarılır..({book_count})"
+        )
+        self.dialog.open()
 
 
     def axtar(self):
@@ -75,37 +79,61 @@ class Interface(MDBoxLayout):
         if libraff_result:
             all_data+= libraff_result
 
+        self.update_dialog(len(all_data))
+        Clock.schedule_once(lambda dt: self.ali_nino(text, all_data))
+
+    def ali_nino(self, text, all_data):
         # Alininodan neticeni goturur..
         alinino = Alinino()
         alinino_result = alinino.axtar(text)
         if alinino_result:
             all_data += alinino_result
 
+        self.update_dialog(len(all_data))
+        Clock.schedule_once(lambda dt: self.kitab_al(text, all_data))
+
+    def kitab_al(self, text, all_data):
         # kitabaldan neticeni goturur..
         kitabal = Kitabal()
         kitabal_result = kitabal.axtar(text)
         if kitabal_result:
             all_data += kitabal_result
 
+        self.update_dialog(len(all_data))
+        Clock.schedule_once(lambda dt: self.kitab_evim(text, all_data))
+
+    def kitab_evim(self, text, all_data):
         # kitabevimdən neticeni goturur..
         kitabevim = Kitabevim()
         kitabevim_result = kitabevim.axtar(text)
         if kitabevim_result:
             all_data += kitabevim_result
 
+        self.update_dialog(len(all_data))
+        Clock.schedule_once(lambda dt: self.novella(text, all_data))
+
+
+    def novella(self, text, all_data):
         # novelladan neticeni goturur..
         novella = Novella()
         novella_result = novella.axtar(text)
         if novella_result:
             all_data += novella_result
 
+        self.update_dialog(len(all_data))
+        Clock.schedule_once(lambda dt: self.ovod(text, all_data))
+
+    def ovod(self, text, all_data):
         # ovoddan neticeni goturur..
         ovod = Ovod()
         ovod_result = ovod.axtar(text)
         if ovod_result:
             all_data += ovod_result
 
+        self.update_dialog(len(all_data))
+        Clock.schedule_once(lambda dt: self.search_result(text, all_data))
 
+    def search_result(self, text, all_data):
         # butun kitablari toplayir..
         if all_data:
             for single_data in all_data:
@@ -118,9 +146,6 @@ class Interface(MDBoxLayout):
                 all_layout.add_widget(price_layout)
                 self.ids.cards.add_widget(all_layout)
         Clock.schedule_once(lambda dt: self.dialog.dismiss())
-
-
-
 
     def open_url(self, url):
         webbrowser.open(url)
