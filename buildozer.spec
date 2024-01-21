@@ -2,7 +2,7 @@
 
 # (str) Title of your application
 title = Kitab tap
-
+ 
 # (str) Package name
 package.name = kitabtap
 
