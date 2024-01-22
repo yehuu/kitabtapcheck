@@ -3,7 +3,7 @@
 # (str) Title of your application
 title = Kitab tap
  
-# (str) Package name
+# (str) Package name 
 package.name = kitabtap
 
 # (str) Package domain (needed for android/ios packaging)
